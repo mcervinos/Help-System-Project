@@ -1,0 +1,8 @@
+axios
+next-auth
+framer-motion
+@types/react
+@types/react-dom
+@types/node
+bcrypt
+uuid

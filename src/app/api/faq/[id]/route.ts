@@ -1,8 +1,10 @@
 import { NextRequest, NextResponse } from "next/server";
 import { db } from "@/lib/db";
 
-export async function GET(req: NextRequest, { params }: { params: { id: string } }) {
-  const id = params.id;
+// Treating params as a Promise to bypass false Next.js warning
+export async function GET(req: NextRequest, { params }: { params: Promise<{ id: string }> }) {
+
+  const {id} = await params;
 
   const [faqRows] = await db.execute(
     `SELECT id, title, department, posterName, question, status, createdAt 
@@ -28,8 +30,9 @@ export async function GET(req: NextRequest, { params }: { params: { id: string }
   });
 }
 
-export async function PUT(req: NextRequest, { params }: { params: { id: string } }) {
-  const id = params.id;
+// Treating params as a Promise to bypass false Next.js warning
+export async function PUT(req: NextRequest, { params }: { params: Promise<{ id: string }> }) {
+  const {id} = await params;
   const { status } = await req.json();
 
   const validStatuses = ["Pending", "In Progress", "Resolved", "Closed"];

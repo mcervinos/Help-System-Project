@@ -9,13 +9,14 @@ interface FAQRow extends RowDataPacket {
     department: string;
 }
 
-export async function POST(req: NextRequest, { params }: { params: { id: string } }) {
+// Treating params as a Promise to bypass false Next.js warning
+export async function POST(req: NextRequest, { params }: { params: Promise<{ id: string }> }) {
   const session = await getServerSession(authOptions);
   if (!session?.user) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
-  const { id } = params;
+  const {id} = await params;
   const { response } = await req.json();
   const responderName = session.user.name;
   const department = session.user.department;
@@ -43,10 +44,12 @@ export async function POST(req: NextRequest, { params }: { params: { id: string 
     return NextResponse.json({ error: "Already responded" }, { status: 409 });
   }
 
-  await db.execute(
+  const [result] = await db.execute(
     "INSERT INTO responses (faqId, responderName, response) VALUES (?, ?, ?)",
     [id, responderName, response]
   );
 
-  return NextResponse.json({ responderName, response });
+  const insertedId = (result as any).insertId;
+
+  return NextResponse.json({ id: insertedId, responderName, response });
 }

@@ -42,7 +42,7 @@ Product Owner (PO): Murilo Paiva (Specialisterne)
 
 Scrum Master: Marcelo Cervino
 
-Programmers: Fábio Ferreira da Silva (Back-end), Gustavo Krueger (Front-end)
+Programmers (back-end and front-end): Gustavo Krueger, Fábio Ferreira da Silva
 
 
 ---

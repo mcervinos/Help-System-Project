@@ -46,8 +46,3 @@ This project was developed by a multidisciplinary team during the Specialisterne
 
 ---
 
-```bash
-git clone https://github.com/yourusername/help-system.git
-cd help-system
-npm install
-npm start

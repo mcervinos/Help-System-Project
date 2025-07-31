@@ -40,6 +40,9 @@ This project was developed by a multidisciplinary team during the Specialisterne
 
 Product Owner (PO): Murilo Paiva (Specialisterne)
 
+Scrum Master: Marcelo Cervino
+
+Programmers: Fábio Ferreira da Silva (Back-end), Gustavo Krueger (Front-end)
 ---
 
 ## 📷 Preview

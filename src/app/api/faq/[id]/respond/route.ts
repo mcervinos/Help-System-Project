@@ -51,5 +51,17 @@ export async function POST(req: NextRequest, { params }: { params: Promise<{ id:
 
   const insertedId = (result as any).insertId;
 
-  return NextResponse.json({ id: insertedId, responderName, response });
+  const [rows] = await db.execute(
+    "SELECT id, responderName, response, createdAt FROM responses WHERE id = ?",
+    [insertedId]
+  );
+
+  const inserted = Array.isArray(rows) && rows.length > 0 ? rows[0] : null;
+
+  if (!inserted) {
+    return NextResponse.json({ error: "Failed to retrieve inserted response" }, { status: 500 });
+  }
+
+  return NextResponse.json(inserted);
+
 }

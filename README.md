@@ -19,7 +19,6 @@ Key features include:
 
 - 📨 Submission of help requests by employees
 - 💬 Peer-to-peer support with threaded responses
-- 📎 Option to attach files for added context
 - 🔁 Status tracking for each support ticket (e.g., Open, In Progress, Resolved)
 - 🌐 Web-based interface for accessibility and ease of use
 
